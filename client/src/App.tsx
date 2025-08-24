@@ -1,5 +1,5 @@
 import { useState } from "react";
-// import SplashScreen from "./components/SplashScreen";
+import SplashScreen from "./components/SplashScreen";
 import { Header } from "./components/Header";
 import { Scene } from "./components/Scene";
 import { FileUploader } from "./components/FileUploader";
@@ -23,11 +23,11 @@ function App() {
   const [modelScale, setModelScale] = useState(1);
   const [isFullScreen, setIsFullScreen] = useState(false);
 
-  // const [splashDone, setSplashDone] = useState(false);
+  const [splashDone, setSplashDone] = useState(false);
 
-  // if (!splashDone) {
-  //   return <SplashScreen onComplete={() => setSplashDone(true)} />;
-  // }
+  if (!splashDone) {
+    return <SplashScreen onComplete={() => setSplashDone(true)} />;
+  }
 
   return (
     <div className="min-h-[200vh] bg-black">
