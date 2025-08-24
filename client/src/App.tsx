@@ -1,21 +1,20 @@
 import { useState } from "react";
+// import SplashScreen from "./components/SplashScreen";
 import { Header } from "./components/Header";
 import { Scene } from "./components/Scene";
 import { FileUploader } from "./components/FileUploader";
 import { ControlPanel } from "./components/ControlPanel";
 import { useModelLoader } from "./hooks/useModelLoader";
-import type { EnvironmentSettings, ControlSettings } from "./types";
 import { Maximize2, Minimize2 } from "lucide-react";
 
 function App() {
-  const { modelUrl, isLoading, error, loadModel, resetModel } =
-    useModelLoader();
-  const [environment, setEnvironment] = useState<EnvironmentSettings>({
-    preset: "city",
+  const { modelUrl, isLoading, error, loadModel, resetModel } = useModelLoader();
+  const [environment, setEnvironment] = useState({
+    preset: "sunset",
     background: true,
     blur: 0,
   });
-  const [controls, setControls] = useState<ControlSettings>({
+  const [controls, setControls] = useState({
     autoRotate: true,
     autoRotateSpeed: 1,
     enableZoom: true,
@@ -23,6 +22,12 @@ function App() {
   });
   const [modelScale, setModelScale] = useState(1);
   const [isFullScreen, setIsFullScreen] = useState(false);
+
+  // const [splashDone, setSplashDone] = useState(false);
+
+  // if (!splashDone) {
+  //   return <SplashScreen onComplete={() => setSplashDone(true)} />;
+  // }
 
   return (
     <div className="min-h-[200vh] bg-black">
@@ -51,11 +56,7 @@ function App() {
                 onClick={() => setIsFullScreen(!isFullScreen)}
                 className="absolute top-4 right-4 bg-gray-800 text-white p-2 rounded-full hover:bg-gray-700"
               >
-                {isFullScreen ? (
-                  <Minimize2 size={20} />
-                ) : (
-                  <Maximize2 size={20} />
-                )}
+                {isFullScreen ? <Minimize2 size={20} /> : <Maximize2 size={20} />}
               </button>
             </div>
           </div>
@@ -64,9 +65,7 @@ function App() {
               <FileUploader onFileSelect={loadModel} isLoading={isLoading} />
               {error && (
                 <div className="bg-red-900 border border-red-700 rounded-xl p-4">
-                  <div className="text-red-300 text-sm font-medium">
-                    {error}
-                  </div>
+                  <div className="text-red-300 text-sm font-medium">{error}</div>
                   <button
                     onClick={resetModel}
                     className="mt-2 text-red-400 hover:text-red-200 text-sm underline"
