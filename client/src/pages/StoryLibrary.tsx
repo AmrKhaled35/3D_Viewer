@@ -23,46 +23,46 @@ export default function StoryLibrary() {
   const stories = [
     {
       id: 1,
-      title: 'Journey to Mars',
-      category: 'planets',
+      title: 'Solar Storms',
+      category: 'space-weather',
       pages: 12,
-      image: 'https://images.pexels.com/photos/73910/mars-mars-rover-space-travel-robot-73910.jpeg',
+      image: 'https://th.bing.com/th?id=OIF.TsshI%2bQS6QtzCqWI9%2f6HRQ&cb=12&rs=1&pid=ImgDetMain&o=7&rm=3', 
     },
     {
       id: 2,
-      title: 'Birth of a Star',
-      category: 'stars',
+      title: 'Aurora Borealis',
+      category: 'space-weather',
       pages: 8,
-      image: 'https://images.pexels.com/photos/1169754/pexels-photo-1169754.jpeg',
+      image: 'https://tse4.mm.bing.net/th/id/OIP.oujw2Si_ALMqy53u2su9RAHaE8?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3',
     },
     {
       id: 3,
-      title: 'The Solar System',
-      category: 'planets',
-      pages: 15,
-      image: 'https://images.pexels.com/photos/2166711/pexels-photo-2166711.jpeg',
+      title: 'Coronal Mass Ejections',
+      category: 'space-weather',
+      pages: 10,
+      image: 'https://tse1.mm.bing.net/th/id/OIP.vTtSfff-13-kDRct9e1EMgHaEK?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3', 
     },
     {
       id: 4,
-      title: 'Astronaut Adventures',
-      category: 'exploration',
-      pages: 10,
-      image: 'https://images.pexels.com/photos/2166711/pexels-photo-2166711.jpeg',
+      title: 'Geomagnetic Storms',
+      category: 'space-weather',
+      pages: 9,
+      image: 'https://th.bing.com/th/id/R.e463d1e189025b98fa20c4e263bca42b?rik=KCUl4cN1jP4ChQ&pid=ImgRaw&r=0',
     },
     {
       id: 5,
-      title: 'Black Hole Mystery',
-      category: 'stars',
-      pages: 14,
-      image: 'https://images.pexels.com/photos/8474647/pexels-photo-8474647.jpeg',
+      title: 'Solar Wind Effects',
+      category: 'space-weather',
+      pages: 11,
+      image: 'https://myspacemuseum.com/wp-content/uploads/2024/04/Solar-Wind-Effects-on-Earth-2.jpg', 
     },
     {
       id: 6,
-      title: 'Leo and the Space Weather',
-      category: 'exploration',
-      pages: 9,
-      image: 'https://tse4.mm.bing.net/th/id/OIP.oujw2Si_ALMqy53u2su9RAHaE8?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3',
-    },
+      title: 'Impact on Satellites',
+      category: 'space-weather',
+      pages: 7,
+      image: 'https://tse4.mm.bing.net/th/id/OIP.jzymMuv29kNOg7gAyfPvMwHaEK?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3', 
+    }
   ];
 
   const filteredStories = selectedCategory === 'all' 
@@ -71,13 +71,14 @@ export default function StoryLibrary() {
 
   const handleStorySelect = (storyId: number) => {
     setShowStarMap(false);
-    navigate('/story/' + storyId);
+    navigate(`/story/${storyId}`);
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-black via-space-dark to-black">
-      {/* Hero Section */}
       <Navbar />
+      
+      {/* Hero Section */}
       <section className="relative w-full h-screen overflow-hidden">
         <video
           autoPlay
@@ -90,11 +91,7 @@ export default function StoryLibrary() {
         </video>
 
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
+          <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
             <BookOpen className="mb-6 text-blue-400 animate-float" size={64} />
             <h1 style={{ fontFamily: "'Orbitron', sans-serif" }} className="text-6xl md:text-7xl font-black text-white mb-4 bg-gradient-to-r from-cyan-300 via-blue-300 to-purple-300 bg-clip-text text-transparent">
               STORY <span className="text-blue-400">LIBRARY</span>
@@ -103,23 +100,16 @@ export default function StoryLibrary() {
               Choose your cosmic adventure and embark on an unforgettable journey through space
             </p>
 
-            {/* Star Map Button */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.5, duration: 0.5 }}
-            >
+            <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.5, duration: 0.5 }}>
               <Button
                 onClick={() => setShowStarMap(true)}
-                className="group relative px-8 py-6 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold text-lg rounded-xl   transition-all duration-300 hover:shadow-cyan-400/70 hover:scale-105"
+                className="group relative px-8 py-6 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold text-lg rounded-xl transition-all duration-300 hover:shadow-cyan-400/70 hover:scale-105"
               >
                 <span className="flex items-center gap-3">
                   <Map className="w-6 h-6 group-hover:rotate-12 transition-transform" />
                   Explore Star Map
                   <Sparkles className="w-5 h-5 animate-twinkle" />
                 </span>
-                
-                {/* Animated glow effect */}
                 <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-500 opacity-0 group-hover:opacity-20 blur-xl transition-opacity" />
               </Button>
             </motion.div>
@@ -130,13 +120,7 @@ export default function StoryLibrary() {
       {/* Categories & Stories Section */}
       <section className="py-12 bg-black/50 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-6">
-          {/* Category Filters */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="flex flex-wrap items-center justify-center gap-4 mb-12"
-          >
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="flex flex-wrap items-center justify-center gap-4 mb-12">
             {categories.map((cat) => {
               const Icon = cat.icon;
               return (
@@ -160,7 +144,6 @@ export default function StoryLibrary() {
             })}
           </motion.div>
 
-          {/* Stories Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <AnimatePresence mode="wait">
               {filteredStories.map((story, index) => (
@@ -170,20 +153,15 @@ export default function StoryLibrary() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -30 }}
                   transition={{ delay: index * 0.1, duration: 0.5 }}
-                  onClick={() => navigate('/story/' + story.id)}
+                  onClick={() => handleStorySelect(story.id)}
                   className="group cursor-pointer"
                 >
                   <div className="relative rounded-3xl overflow-hidden border border-white/10 hover:border-cyan-400/50 transition-all transform hover:scale-105 bg-white/5 backdrop-blur-md">
                     <div className="aspect-[6/4] relative">
-                      <img
-                        src={story.image}
-                        alt={story.title}
-                        className="w-full h-full object-cover"
-                      />
+                      <img src={story.image} alt={story.title} className="w-full h-full object-cover" />
                       <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent group-hover:from-black/80 transition-all" />
-
                       <div className="absolute inset-x-0 bottom-0 p-6">
-                        <h3 style={{ fontFamily: "'Orbitron', sans-serif" }}  className="text-3xl font-bold text-white mb-2 bg-gradient-to-r from-cyan-300 to-blue-300 bg-clip-text text-transparent">
+                        <h3 style={{ fontFamily: "'Orbitron', sans-serif" }} className="text-3xl font-bold text-white mb-2 bg-gradient-to-r from-cyan-300 to-blue-300 bg-clip-text text-transparent">
                           {story.title}
                         </h3>
                         <div className="text-cyan-400 text-md font-semibold flex items-center space-x-2">
@@ -192,7 +170,6 @@ export default function StoryLibrary() {
                         </div>
                       </div>
                     </div>
-
                     <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity bg-gradient-to-br from-cyan-500/10 via-transparent to-blue-500/10" />
                   </div>
                 </motion.div>
@@ -202,42 +179,24 @@ export default function StoryLibrary() {
         </div>
       </section>
 
-      {/* Star Map Dialog with Spaceship Door Animation */}
+      {/* Star Map Dialog */}
       <AnimatePresence>
         {showStarMap && (
           <Dialog open={showStarMap} onOpenChange={setShowStarMap}>
             <DialogContent className="max-w-6xl bg-black/95 backdrop-blur-xl border-2 border-cyan-400/30 p-0 overflow-hidden">
-              <motion.div
-                initial={{ 
-                  clipPath: 'polygon(0% 50%, 100% 50%, 100% 50%, 0% 50%)',
-                  opacity: 0,
-                  scale: 0.9,
-                }}
-                animate={{ 
-                  clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
-                  opacity: 1,
-                  scale: 1,
-                }}
-                exit={{ 
-                  clipPath: 'polygon(0% 50%, 100% 50%, 100% 50%, 0% 50%)',
-                  opacity: 0,
-                  scale: 0.9,
-                }}
-                transition={{ 
-                  duration: 0.7, 
-                  ease: [0.34, 1.56, 0.64, 1],
-                }}
+              <motion.div initial={{ clipPath: 'polygon(0% 50%, 100% 50%, 100% 50%, 0% 50%)', opacity: 0, scale: 0.9 }}
+                animate={{ clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)', opacity: 1, scale: 1 }}
+                exit={{ clipPath: 'polygon(0% 50%, 100% 50%, 100% 50%, 0% 50%)', opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.7, ease: [0.34, 1.56, 0.64, 1] }}
               >
                 <DialogTitle className="sr-only">Story Constellation Map</DialogTitle>
                 <div className="relative">
-                  {/* Close button with glow effect */}
                   <button
                     onClick={() => setShowStarMap(false)}
                     className="absolute top-4 right-4 z-50 p-2 rounded-full bg-black/50 backdrop-blur-sm border border-cyan-400/30 hover:border-cyan-400 transition-all group"
                   >
                     <div className="absolute inset-0 rounded-full bg-cyan-400/20 opacity-0 group-hover:opacity-100 blur-xl transition-opacity" />
                   </button>
-
                   <StarMap stories={stories} onStorySelect={handleStorySelect} />
                 </div>
               </motion.div>
@@ -245,6 +204,7 @@ export default function StoryLibrary() {
           </Dialog>
         )}
       </AnimatePresence>
+
       <Footer />
     </div>
   );

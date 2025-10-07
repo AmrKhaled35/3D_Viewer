@@ -7,6 +7,7 @@ import ChatbotPage from './pages/ChatbotPage';
 import GameStart from './pages/GameStart';
 import Game from './pages/Game';
 
+
 function App() {
   return (
     <BrowserRouter>
@@ -16,7 +17,7 @@ function App() {
         <Route path="/game" element={<GameStart />} />
         <Route path="/game/play" element={<Game />} />
         <Route path="/library" element={<StoryLibrary />} />
-        <Route path="/story/:id" element={<StoryBook />} />
+        <Route path="/story/:storyId" element={<StoryBook />} />
         <Route path="/chatbot" element={<ChatbotPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

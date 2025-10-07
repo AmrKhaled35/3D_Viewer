@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight, Play, Pause, Download, BookOpen } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import jsPDF from "jspdf";
 interface StoryPage {
   id: number;
@@ -15,48 +15,221 @@ interface CoverPage {
   illustration: string;
 }
 
-const coverPage: CoverPage = {
-  title: "Leo and the Space Weather",
-  subtitle: "Exploring Storms from the Sun",
-  author: "A Journey into Solar Science",
-  illustration: "https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg" // Aurora (shining sky caused by space weather)
-};
+interface Story {
+  id: number;
+  cover: CoverPage;
+  pages: StoryPage[];
+}
 
-
-const storyPages: StoryPage[] = [
+const allStories = [
   {
     id: 1,
-    illustration: "https://tse4.mm.bing.net/th/id/OIP.oujw2Si_ALMqy53u2su9RAHaE8?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3",
-    text: "The Sun is the engine of space weather. It constantly releases streams of charged particles and bursts of energy that travel across the solar system"
+    cover: {
+      title: "Solar Storms",
+      subtitle: "Exploring Storms from the Sun",
+      author: "A Journey into Solar Science",
+      illustration: "https://assets.science.nasa.gov/dynamicimage/assets/science/hpd/space-weather/SDO_5-14-25_0818UT_131-304.jpg?crop=faces%2Cfocalpoint&fit=clip&h=4096&w=4096"
+    },
+    pages: [
+      { 
+        id: 1, 
+        illustration: "https://www.nasa.gov/wp-content/uploads/2017/09/sept10x8blend1311714k.jpg", 
+        text: "The Sun is the engine of space weather, constantly sending out streams of charged particles. These streams, known as solar winds, can reach Earth and interact with our planet's magnetic field. Scientists study these interactions to predict space weather and protect modern technology." 
+      },
+      { 
+        id: 2, 
+        illustration: "https://assets.science.nasa.gov/dynamicimage/assets/science/hpd/space-weather/SDO_5-14-25_0818UT_131-304.jpg?crop=faces%2Cfocalpoint&fit=clip&h=4096&w=4096", 
+        text: "Solar wind is a continuous flow of charged particles emitted by the Sun’s corona. When the wind becomes intense, it can disturb satellite communications and GPS systems. Understanding its patterns helps in forecasting potential disruptions in Earth’s atmosphere." 
+      },
+      { 
+        id: 3, 
+        illustration: "https://science.nasa.gov/wp-content/uploads/2024/09/cme-soho-eit-c2-2002.jpg?w=768", 
+        text: "Magnetic storms can affect satellites and power grids, sometimes leading to blackouts. During major solar events, these storms create spectacular auroras near the poles. Scientists are working on ways to minimize the risks these storms pose to our global infrastructure." 
+      },
+      { 
+        id: 4, 
+        illustration: "https://science.nasa.gov/wp-content/uploads/2024/05/sdo-x5pt8-flare-0122ut-may-11-2024-171-193-131.jpg", 
+        text: "Understanding solar storms helps protect astronauts and spacecraft from dangerous radiation. With better solar observation tools, we can predict these storms earlier. This knowledge ensures safer exploration of space and more resilient technologies on Earth." 
+      },
+    ]
   },
   {
     id: 2,
-    illustration: "https://tse4.mm.bing.net/th/id/OIP.oujw2Si_ALMqy53u2su9RAHaE8?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3",
-    text: "Solar wind is a continuous flow of charged particles from the Sun. It shapes the magnetic environment of planets and can disturb Earth’s protective shield"
+    cover: {
+      title: "Aurora Borealis",
+      subtitle: "Northern Lights Magic",
+      author: "Journey Across the Arctic",
+      illustration: "https://www.nasa.gov/wp-content/uploads/2023/03/25937026477_4b7949e87d_o.jpg"
+    },
+    pages: [
+      { 
+        id: 1, 
+        illustration: "https://www.nasa.gov/wp-content/uploads/2023/03/626125main_iss030e097783_full.jpg?w=1041", 
+        text: "Auroras light up the sky with colors of green, pink, and violet, dancing like curtains of light. They appear mostly in polar regions, where Earth’s magnetic field interacts with solar particles. This mesmerizing phenomenon has fascinated humans for centuries." 
+      },
+      { 
+        id: 2, 
+        illustration: "https://science.nasa.gov/wp-content/uploads/2024/08/sinha-aurorasaurus-pho-20240411.jpg?w=720", 
+        text: "The aurora is caused by charged particles from the Sun colliding with gases in Earth's atmosphere. Oxygen produces green and red lights, while nitrogen adds blue and purple hues. The intensity of the aurora depends on solar activity and geomagnetic conditions." 
+      },
+      { 
+        id: 3, 
+        illustration: "https://science.nasa.gov/wp-content/uploads/2024/08/sinha-aurorasaurus-pho-20240411.jpg?w=720", 
+        text: "Travelers from around the world visit Norway, Iceland, and Canada to witness the Northern Lights. Photographers capture breathtaking scenes under frozen skies. Seeing an aurora in person is often described as a once-in-a-lifetime experience." 
+      },
+      { 
+        id: 4, 
+        illustration: "https://science.nasa.gov/wp-content/uploads/2024/08/sinha-aurorasaurus-pho-20240411.jpg?w=720", 
+        text: "Auroras have inspired countless myths and legends across cultures. Some ancient people believed they were messages from the gods. Today, they remind us of the incredible connection between our planet and the Sun." 
+      },
+    ]
   },
   {
     id: 3,
-    illustration: "https://images.pexels.com/photos/1169754/pexels-photo-1169754.jpeg",
-    text: "One day, Leo discovered an ancient glowing artifact floating among the asteroids. It pulsed with mysterious light, telling stories of civilizations from across the universe."
+    cover: {
+      title: "Coronal Mass Ejections",
+      subtitle: "Sun's Explosive Phenomena",
+      author: "Solar Science Today",
+      illustration: "https://tse1.mm.bing.net/th/id/OIP.vTtSfff-13-kDRct9e1EMgHaEK?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3"
+    },
+    pages: [
+      { 
+        id: 1, 
+        illustration: "https://pwg.gsfc.nasa.gov/istp/nicky/Image1.gif", 
+        text: "Coronal Mass Ejections, or CMEs, are massive explosions on the Sun’s surface. They release billions of tons of plasma into space at incredible speeds. When directed toward Earth, CMEs can create beautiful auroras and also disrupt communication systems." 
+      },
+      { 
+        id: 2, 
+        illustration: "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2003/02/coronal_mass_ejections_sometimes_reach_out_in_the_direction_of_earth/9851895-3-eng-GB/Coronal_mass_ejections_sometimes_reach_out_in_the_direction_of_Earth.jpg", 
+        text: "These eruptions can travel millions of kilometers per hour, reaching Earth within days. They compress Earth’s magnetic field, causing geomagnetic storms. Space agencies monitor the Sun daily to track these massive ejections." 
+      },
+      { 
+        id: 3, 
+        illustration: "https://www.nasa.gov/wp-content/uploads/2023/03/faq4.jpg?w=1041", 
+        text: "When CMEs interact with our atmosphere, they can interfere with radio waves and satellite signals. Scientists study their magnetic structures to improve forecasting models. Early warnings help protect astronauts and power grids from harmful effects." 
+      },
+      { 
+        id: 4, 
+        illustration: "https://cdn.mos.cms.futurecdn.net/46PJLXCiJJcB8HZwLygdJT.jpg", 
+        text: "Monitoring CMEs is essential for planning safe space missions. With modern telescopes and spacecraft, scientists can capture detailed images of solar eruptions. These insights help us understand the complex behavior of our nearest star." 
+      },
+    ]
   },
   {
     id: 4,
-    illustration: "https://images.pexels.com/photos/8474647/pexels-photo-8474647.jpeg",
-    text: "The artifact showed him a constellation map of endless adventures the time he visited Mars, the day he flew through Saturn's rings, and the moment he saw Earth from space. It reminded him that courage lives in every explorer's heart."
+    cover: {
+      title: "Planet Exploration",
+      subtitle: "Visiting the Planets",
+      author: "Space Adventurer",
+      illustration: "https://th.bing.com/th/id/R.e463d1e189025b98fa20c4e263bca42b?rik=KCUl4cN1jP4ChQ&pid=ImgRaw&r=0"
+    },
+    pages: [
+      { 
+        id: 1, 
+        illustration: "https://images.openai.com/static-rsc-1/H7q3zquj3_JIbe3ucfOL9OxDjKrO8YMSszUF0MTcl7aHiiG8VpmmvU8YIP7w-_C0x2v-nLXZrTrKa7fd0vMWuTbk1M8zsiTnDl1CUNE2wjch5ts3JNW7V9ojvQp3IDDnJoMqCEp71cpbI_tqWLc9zw", 
+        text: "Mars is the fourth planet from the Sun, often called the Red Planet due to its iron-rich soil. It has the largest volcano in the solar system, Olympus Mons. Scientists believe Mars once had liquid water, making it a candidate for ancient life." 
+      },
+      { 
+        id: 2, 
+        illustration: "https://images.openai.com/static-rsc-1/8o9tJNH4E3XiU0jr3jwRg0bI_raVENNtkV0cwdVWw3JYgYsHFoMEEgnENiVnrz5C4rPe1LF0BoJBoBkF5TfAU79ilndOxaUkK06KUFl6-U34bQ4SzxGjhau6Op6ZjSicupBhg_xpLKaN1Yhltlaw7w", 
+        text: "Jupiter is the largest planet, a gas giant with a massive storm known as the Great Red Spot. Its magnetic field is the strongest among all planets. Jupiter’s many moons, including Europa, may harbor oceans beneath their icy crusts." 
+      },
+      { 
+        id: 3, 
+        illustration: "https://images.openai.com/static-rsc-1/SCW0dI9HeMzuF-CT9HQb9olHybE60zT079tgnXyrCK29DNG_XYzGxvm5RUuXx5Xf2SrwSf9T-lrktDYbw5XnVqZlLwiaD1G4r89GuByeyqG5iA7JtTdGiNV7CnL-RvW0LZxC47bf_iHz3c2E6AZNXw", 
+        text: "Saturn is famous for its beautiful rings made of ice and rock particles. These rings extend thousands of kilometers but are only a few meters thick. Saturn’s moon Titan also intrigues scientists with its dense atmosphere and methane lakes." 
+      },
+      { 
+        id: 4, 
+        illustration: "https://images.openai.com/static-rsc-1/7u6Uh7pn88NGdnMqwWajoxy04bjQzInF3sxSARle9O25G_wmc2zLG-f2BuKBC_ECoVWGjX-rop5YMPZoDcFPOVcqkxZBveQGN8Cnf7cMO-4nBuoeZCsJt9vGhlQ8qWiT6VjDyhxBV5oGZSfmZZDRAg", 
+        text: "Exploring planets helps us understand the formation of our solar system. Robotic missions and telescopes continue to reveal new wonders. Each discovery brings us closer to answering whether life exists beyond Earth." 
+      },
+    ]
   },
   {
     id: 5,
-    illustration: "https://images.pexels.com/photos/39896/space-station-moon-landing-apollo-15-james-irwin-39896.jpeg",
-    text: "Leo smiled, holding the artifact close as Earth glowed in the distance. He realized that the greatest adventures aren't just discovered—they're lived, remembered, and shared across the stars forever."
-  }
+    cover: {
+      title: "Black Holes",
+      subtitle: "Mysteries of the Universe",
+      author: "Astrophysics Insights",
+      illustration: "https://myspacemuseum.com/wp-content/uploads/2024/04/Solar-Wind-Effects-on-Earth-2.jpg"
+    },
+    pages: [
+      { 
+        id: 1, 
+        illustration: "https://tse2.mm.bing.net/th/id/OIP.ITfI5Tf_NYN-mw2LFGpMtQHaF7?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3", 
+        text: "Black holes are regions in space where gravity is so strong that nothing can escape. They form when massive stars collapse after exhausting their fuel. Their immense pull bends light and even time itself." 
+      },
+      { 
+        id: 2, 
+        illustration: "https://tse3.mm.bing.net/th/id/OIP.-60Fc4fdQ3mxpqsskADRywHaFK?cb=12&w=2074&h=1446&rs=1&pid=ImgDetMain&o=7&rm=3", 
+        text: "Nothing, not even light, can escape a black hole’s event horizon. Scientists detect them by observing how they affect nearby stars and gas. These mysterious objects challenge our understanding of physics." 
+      },
+      { 
+        id: 3, 
+        illustration: "https://d.newsweek.com/en/full/2336923/black-hole.jpg", 
+        text: "Studying black holes helps us explore the extremes of gravity and spacetime. The first image of a black hole, captured in 2019, confirmed many theories of relativity. Each new discovery deepens our cosmic curiosity." 
+      },
+      { 
+        id: 4, 
+        illustration: "https://tse4.mm.bing.net/th/id/OIP.2EzI5fduX7uhTwtt3lhEzQHaE7?cb=12&w=1280&h=853&rs=1&pid=ImgDetMain&o=7&rm=3", 
+        text: "Black holes can merge, releasing powerful gravitational waves detectable on Earth. These waves ripple through spacetime, carrying stories from distant galaxies. They are a window into some of the universe’s most violent events." 
+      },
+    ]
+  },
+  {
+    id: 6,
+    cover: {
+      title: "Galaxies",
+      subtitle: "Islands of Stars",
+      author: "Cosmic Explorer",
+      illustration: "https://tse4.mm.bing.net/th/id/OIP.jzymMuv29kNOg7gAyfPvMwHaEK?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3"
+    },
+    pages: [
+      { 
+        id: 1, 
+        illustration: "https://science.nasa.gov/wp-content/uploads/2023/04/potw2109a-jpg.webp", 
+        text: "Galaxies are vast collections of stars, gas, dust, and dark matter bound by gravity. They come in many shapes—spiral, elliptical, and irregular. Each galaxy contains billions of stars, each potentially hosting its own planets." 
+      },
+      { 
+        id: 2, 
+        illustration: "https://c02.purpledshub.com/uploads/sites/48/2024/06/10.WhirlpoolGalaxy_HarshwardhanPathak.jpg?w=1200&webp=1", 
+        text: "The Milky Way is our home galaxy, stretching over 100,000 light-years. Our Sun is just one of hundreds of billions of stars orbiting its center. Scientists study the Milky Way to understand how galaxies evolve over time." 
+      },
+      { 
+        id: 3, 
+        illustration: "https://science.nasa.gov/wp-content/uploads/2023/09/ssc2019-15b-med.jpg?w=1024", 
+        text: "Sometimes galaxies collide, merging into larger systems and sparking new waves of star formation. These cosmic interactions reshape the structure of the universe. Observing them helps astronomers trace the history of creation." 
+      },
+      { 
+        id: 4, 
+        illustration: "https://c02.purpledshub.com/uploads/sites/41/2018/11/PIA15630-medium-9a2b4d0.jpg?w=1200&webp=1", 
+        text: "Exploring galaxies allows us to glimpse the vastness of the cosmos. With advanced telescopes, we can see light that has traveled for billions of years. Every observation reminds us how small, yet special, our place in the universe is." 
+      },
+    ]
+  },
 ];
 
+
+
 const StoryBook = () => {
+  const { storyId } = useParams<{ storyId: string }>();
+  const navigate = useNavigate()
   const [currentPage, setCurrentPage] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const speechRef = useRef<SpeechSynthesisUtterance | null>(null);
-  const navigate = useNavigate();
+  
+  // Find the selected story based on storyId
+  const selectedStory: Story | undefined = allStories.find(
+    story => story.id.toString() === storyId
+  );
+
+  console.log({storyId, selectedStory})
+  // Use selected story or default to first story if not found
+  const story = selectedStory || allStories[0];
+  const coverPage = story.cover;
+  const storyPages = story.pages;
 
   useEffect(() => {
     return () => {
@@ -128,7 +301,7 @@ const StoryBook = () => {
   
   const drawBorder = (doc: jsPDF, pageWidth: number, pageHeight: number) => {
     const goldColor = [184, 134, 11];
-    doc.setDrawColor(...goldColor);
+    doc.setDrawColor(goldColor[0], goldColor[1], goldColor[2]);
     doc.setLineWidth(2);
     doc.rect(30, 30, pageWidth - 60, pageHeight - 60, "S");
     doc.setLineWidth(0.5);
@@ -229,7 +402,7 @@ const StoryBook = () => {
       doc.save(`${coverPage.title.replace(/\s+/g, "_")}.pdf`);
     } catch (error) {
       console.error("Error generating PDF:", error);
-      alert("حدث خطأ أثناء إنشاء الـ PDF. يرجى المحاولة مرة أخرى.");
+      alert("An error occurred while generating the PDF. Please try again.");
     }
   };
   
