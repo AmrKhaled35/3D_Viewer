@@ -90,17 +90,17 @@ const allStories = [
       title: "Coronal Mass Ejections",
       subtitle: "Sun's Explosive Phenomena",
       author: "Solar Science Today",
-      illustration: "https://tse1.mm.bing.net/th/id/OIP.vTtSfff-13-kDRct9e1EMgHaEK?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3"
+      illustration: "https://science.nasa.gov/wp-content/uploads/2024/09/coronal-mass-ejection-label.png"
     },
     pages: [
       { 
         id: 1, 
-        illustration: "https://pwg.gsfc.nasa.gov/istp/nicky/Image1.gif", 
+        illustration: "https://www.nasa.gov/wp-content/uploads/2023/03/faq4.jpg?w=1041", 
         text: "Coronal Mass Ejections, or CMEs, are massive explosions on the Sun’s surface. They release billions of tons of plasma into space at incredible speeds. When directed toward Earth, CMEs can create beautiful auroras and also disrupt communication systems." 
       },
       { 
         id: 2, 
-        illustration: "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2003/02/coronal_mass_ejections_sometimes_reach_out_in_the_direction_of_earth/9851895-3-eng-GB/Coronal_mass_ejections_sometimes_reach_out_in_the_direction_of_Earth.jpg", 
+        illustration: "https://science.nasa.gov/wp-content/uploads/2024/09/coronal-mass-ejection-label.png", 
         text: "These eruptions can travel millions of kilometers per hour, reaching Earth within days. They compress Earth’s magnetic field, causing geomagnetic storms. Space agencies monitor the Sun daily to track these massive ejections." 
       },
       { 
@@ -110,7 +110,7 @@ const allStories = [
       },
       { 
         id: 4, 
-        illustration: "https://cdn.mos.cms.futurecdn.net/46PJLXCiJJcB8HZwLygdJT.jpg", 
+        illustration: "https://www.nasa.gov/wp-content/uploads/2023/03/faq4.jpg?w=1041", 
         text: "Monitoring CMEs is essential for planning safe space missions. With modern telescopes and spacecraft, scientists can capture detailed images of solar eruptions. These insights help us understand the complex behavior of our nearest star." 
       },
     ]
@@ -121,27 +121,27 @@ const allStories = [
       title: "Planet Exploration",
       subtitle: "Visiting the Planets",
       author: "Space Adventurer",
-      illustration: "https://th.bing.com/th/id/R.e463d1e189025b98fa20c4e263bca42b?rik=KCUl4cN1jP4ChQ&pid=ImgRaw&r=0"
+      illustration: "https://science.nasa.gov/wp-content/uploads/2024/05/europa-clipper-16x9-1.jpg?w=1024"
     },
     pages: [
       { 
         id: 1, 
-        illustration: "https://images.openai.com/static-rsc-1/H7q3zquj3_JIbe3ucfOL9OxDjKrO8YMSszUF0MTcl7aHiiG8VpmmvU8YIP7w-_C0x2v-nLXZrTrKa7fd0vMWuTbk1M8zsiTnDl1CUNE2wjch5ts3JNW7V9ojvQp3IDDnJoMqCEp71cpbI_tqWLc9zw", 
+        illustration: "https://science.nasa.gov/wp-content/uploads/2024/05/europa-clipper-16x9-1.jpg?w=1024", 
         text: "Mars is the fourth planet from the Sun, often called the Red Planet due to its iron-rich soil. It has the largest volcano in the solar system, Olympus Mons. Scientists believe Mars once had liquid water, making it a candidate for ancient life." 
       },
       { 
         id: 2, 
-        illustration: "https://images.openai.com/static-rsc-1/8o9tJNH4E3XiU0jr3jwRg0bI_raVENNtkV0cwdVWw3JYgYsHFoMEEgnENiVnrz5C4rPe1LF0BoJBoBkF5TfAU79ilndOxaUkK06KUFl6-U34bQ4SzxGjhau6Op6ZjSicupBhg_xpLKaN1Yhltlaw7w", 
+        illustration: "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/2023/06/psd-fleet-03092022b.jpg?crop=faces%2Cfocalpoint&fit=clip&h=900&w=1600", 
         text: "Jupiter is the largest planet, a gas giant with a massive storm known as the Great Red Spot. Its magnetic field is the strongest among all planets. Jupiter’s many moons, including Europa, may harbor oceans beneath their icy crusts." 
       },
       { 
         id: 3, 
-        illustration: "https://images.openai.com/static-rsc-1/SCW0dI9HeMzuF-CT9HQb9olHybE60zT079tgnXyrCK29DNG_XYzGxvm5RUuXx5Xf2SrwSf9T-lrktDYbw5XnVqZlLwiaD1G4r89GuByeyqG5iA7JtTdGiNV7CnL-RvW0LZxC47bf_iHz3c2E6AZNXw", 
+        illustration: "https://images-assets.nasa.gov/image/PIA01341/PIA01341~large.jpg?crop=faces%2Cfocalpoint&fit=clip&h=1920&w=1570", 
         text: "Saturn is famous for its beautiful rings made of ice and rock particles. These rings extend thousands of kilometers but are only a few meters thick. Saturn’s moon Titan also intrigues scientists with its dense atmosphere and methane lakes." 
       },
       { 
         id: 4, 
-        illustration: "https://images.openai.com/static-rsc-1/7u6Uh7pn88NGdnMqwWajoxy04bjQzInF3sxSARle9O25G_wmc2zLG-f2BuKBC_ECoVWGjX-rop5YMPZoDcFPOVcqkxZBveQGN8Cnf7cMO-4nBuoeZCsJt9vGhlQ8qWiT6VjDyhxBV5oGZSfmZZDRAg", 
+        illustration: "https://science.nasa.gov/wp-content/uploads/2023/10/edu-solar-system-large.png?w=1024", 
         text: "Exploring planets helps us understand the formation of our solar system. Robotic missions and telescopes continue to reveal new wonders. Each discovery brings us closer to answering whether life exists beyond Earth." 
       },
     ]
@@ -152,27 +152,27 @@ const allStories = [
       title: "Black Holes",
       subtitle: "Mysteries of the Universe",
       author: "Astrophysics Insights",
-      illustration: "https://myspacemuseum.com/wp-content/uploads/2024/04/Solar-Wind-Effects-on-Earth-2.jpg"
+      illustration: "https://assets.science.nasa.gov/dynamicimage/assets/science/missions/hubble/releases/2022/06/STScI-01FQHABPWKNXRYBMXQWRAGFWSC.tif?crop=faces%2Cfocalpoint&fit=clip&h=1052&w=1877"
     },
     pages: [
       { 
         id: 1, 
-        illustration: "https://tse2.mm.bing.net/th/id/OIP.ITfI5Tf_NYN-mw2LFGpMtQHaF7?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3", 
+        illustration: "https://assets.science.nasa.gov/dynamicimage/assets/science/missions/hubble/releases/2022/06/STScI-01FQHABPWKNXRYBMXQWRAGFWSC.tif?crop=faces%2Cfocalpoint&fit=clip&h=1052&w=1877", 
         text: "Black holes are regions in space where gravity is so strong that nothing can escape. They form when massive stars collapse after exhausting their fuel. Their immense pull bends light and even time itself." 
       },
       { 
         id: 2, 
-        illustration: "https://tse3.mm.bing.net/th/id/OIP.-60Fc4fdQ3mxpqsskADRywHaFK?cb=12&w=2074&h=1446&rs=1&pid=ImgDetMain&o=7&rm=3", 
+        illustration: "https://d2pn8kiwq2w21t.cloudfront.net/original_images/sgra_blackhole_eht.png", 
         text: "Nothing, not even light, can escape a black hole’s event horizon. Scientists detect them by observing how they affect nearby stars and gas. These mysterious objects challenge our understanding of physics." 
       },
       { 
         id: 3, 
-        illustration: "https://d.newsweek.com/en/full/2336923/black-hole.jpg", 
+        illustration: "https://d2pn8kiwq2w21t.cloudfront.net/original_images/sgra_blackhole_eht.png", 
         text: "Studying black holes helps us explore the extremes of gravity and spacetime. The first image of a black hole, captured in 2019, confirmed many theories of relativity. Each new discovery deepens our cosmic curiosity." 
       },
       { 
         id: 4, 
-        illustration: "https://tse4.mm.bing.net/th/id/OIP.2EzI5fduX7uhTwtt3lhEzQHaE7?cb=12&w=1280&h=853&rs=1&pid=ImgDetMain&o=7&rm=3", 
+        illustration: "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/internal_resources/3622/Illustration_of_black_hole.jpeg?crop=faces%2Cfocalpoint&fit=clip&h=1224&w=1728", 
         text: "Black holes can merge, releasing powerful gravitational waves detectable on Earth. These waves ripple through spacetime, carrying stories from distant galaxies. They are a window into some of the universe’s most violent events." 
       },
     ]

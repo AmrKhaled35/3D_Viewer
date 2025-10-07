@@ -51,14 +51,14 @@ export default function StoryLibrary() {
     },
     {
       id: 5,
-      title: 'Solar Wind Effects',
+      title: 'Black Holes',
       category: 'space-weather',
       pages: 11,
-      image: 'https://myspacemuseum.com/wp-content/uploads/2024/04/Solar-Wind-Effects-on-Earth-2.jpg', 
+      image: 'https://assets.science.nasa.gov/dynamicimage/assets/science/missions/hubble/releases/2022/06/STScI-01FQHABPWKNXRYBMXQWRAGFWSC.tif?crop=faces%2Cfocalpoint&fit=clip&h=1052&w=1877', 
     },
     {
       id: 6,
-      title: 'Impact on Satellites',
+      title: 'Galaxies',
       category: 'space-weather',
       pages: 7,
       image: 'https://tse4.mm.bing.net/th/id/OIP.jzymMuv29kNOg7gAyfPvMwHaEK?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3', 
