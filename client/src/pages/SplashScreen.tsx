@@ -5,9 +5,13 @@ import { Rocket } from 'lucide-react';
 export default function SplashScreen() {
   const [tvOn, setTvOn] = useState(false);
   const [showLogo, setShowLogo] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const navigate = useNavigate();
 
   useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener('resize', handleResize);
+
     const timer1 = setTimeout(() => setTvOn(true), 500);
     const timer2 = setTimeout(() => setShowLogo(true), 2500);
     const timer3 = setTimeout(() => navigate('/home'), 7000);
@@ -16,13 +20,14 @@ export default function SplashScreen() {
       clearTimeout(timer1);
       clearTimeout(timer2);
       clearTimeout(timer3);
+      window.removeEventListener('resize', handleResize);
     };
   }, [navigate]);
 
   return (
-    <div className="fixed inset-0 bg-black overflow-hidden">
+    <div className="fixed inset-0 bg-black overflow-hidden flex items-center justify-center">
       <div
-        className="w-full h-full transition-all duration-1000 relative"
+        className="w-full h-full transition-all duration-1000 relative flex items-center justify-center"
         style={{
           background: tvOn
             ? 'radial-gradient(ellipse at center, #0b0b1a 0%, #000000 70%)'
@@ -46,10 +51,22 @@ export default function SplashScreen() {
           autoPlay
           loop
           muted
-          className="absolute inset-0 w-full h-full object-cover"
-          style={{ opacity: showLogo ? 1 : 0, transition: 'opacity 2s' }}
+          playsInline
+          className={`absolute inset-0 w-full h-full ${isMobile ? 'object-cover' : 'object-contain md:object-cover'}`}
+          style={{
+            opacity: showLogo ? 1 : 0,
+            transition: 'opacity 2s',
+            backgroundColor: 'black',
+          }}
         >
-          <source src="https://static.videezy.com/system/resources/previews/000/005/456/original/Earth_Eclipse_Rotate_Medium.mp4" type="video/mp4" />
+          <source
+            src={
+              isMobile
+                ? 'https://www.pexels.com/download/video/2611250/'
+                : 'https://static.videezy.com/system/resources/previews/000/005/456/original/Earth_Eclipse_Rotate_Medium.mp4'
+            }
+            type="video/mp4"
+          />
         </video>
 
         <div
@@ -59,11 +76,11 @@ export default function SplashScreen() {
             transform: showLogo ? 'scale(1)' : 'scale(0.5)',
           }}
         >
-          <div className="text-center relative">
-            <div className="flex items-center justify-center mb-8">
+          <div className="text-center relative px-4 sm:px-6 md:px-8">
+            <div className="flex items-center justify-center mb-6 sm:mb-8">
               <Rocket
                 className="text-white"
-                size={60}
+                size={isMobile ? 40 : 50}
                 style={{
                   filter: 'drop-shadow(0 0 20px rgba(255, 255, 255, 0.8))',
                   animation: 'rocket 2s ease-in-out infinite',
@@ -72,18 +89,19 @@ export default function SplashScreen() {
             </div>
 
             <h1
-              className="text-8xl font-black tracking-wider relative"
+              className="font-black tracking-wider relative text-5xl sm:text-5xl md:text-8xl lg:text-9xl"
               style={{
                 fontFamily: "'Orbitron', sans-serif",
                 color: '#ffffff',
-                textShadow: '0 0 40px rgba(255, 255, 255, 0.8), 0 0 80px rgba(100, 200, 255, 0.6)',
+                textShadow:
+                  '0 0 40px rgba(255, 255, 255, 0.8), 0 0 80px rgba(100, 200, 255, 0.6)',
                 animation: 'glow 2s ease-in-out infinite alternate',
               }}
             >
               NOVA<span className="text-blue-400">TECH</span>
             </h1>
 
-            <div className="mt-6 h-1 bg-gradient-to-r from-transparent via-white to-transparent opacity-50" />
+            <div className="mt-4 sm:mt-6 h-1 bg-gradient-to-r from-transparent via-white to-transparent opacity-50 w-3/4 mx-auto" />
           </div>
         </div>
       </div>
