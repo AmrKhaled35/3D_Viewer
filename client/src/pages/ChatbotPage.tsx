@@ -322,81 +322,9 @@ export function ChatbotPage() {
             </div>
           </div>
         ) : (
-          <div className="flex flex-col sm:flex-row transition-all duration-500 h-auto sm:h-screen">
-            <div className="sm:w-3/5 w-full bg-white/5 backdrop-blur-xl border-b sm:border-b-0 sm:border-l border-blue-400/30 p-6 relative">
-              <div className="absolute top-4 sm:top-16 right-4 z-10">
-                <button
-                  onClick={() => setIsExpanded(true)}
-                  className="p-2 bg-blue-500/30 hover:bg-blue-500/50 rounded-xl transition-all duration-300"
-                >
-                  <Maximize2 className="text-white w-5 h-5" />
-                </button>
-              </div>
-
-              <div className="h-full flex flex-col">
-                <div className="mb-6">
-                  <div className="flex items-center justify-between mb-3">
-                    <h3
-                      className="text-xl font-bold text-white"
-                      style={{ fontFamily: "'Orbitron', sans-serif" }}
-                    >
-                      Story Visualization
-                    </h3>
-                    <div className="w-3 h-3 bg-blue-400 rounded-full animate-pulse" />
-                  </div>
-                  <p
-                    className="text-sm text-white/60 font-medium"
-                    style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-                  >
-                    Interactive story book preview
-                  </p>
-                </div>
-
-                <div className="flex-1 relative rounded-2xl overflow-hidden border border-blue-400/30 bg-black/40">
-                  <div className="w-full h-full flex items-center justify-center p-8">
-                    <div
-                      className="max-w-5xl w-full rounded-2xl overflow-hidden"
-                      style={{
-                        background: "rgba(15, 15, 35, 0.8)",
-                        backdropFilter: "blur(10px)",
-                        boxShadow: "0 20px 60px rgba(0, 0, 0, 0.6)",
-                        border: "1px solid rgba(100, 200, 255, 0.2)",
-                      }}
-                    >
-                      <div className="grid md:grid-cols-2 gap-0">
-                        <div className="relative aspect-[3/4] md:aspect-auto md:min-h-[300px] overflow-hidden">
-                          <img
-                            src={previewStoryPages[previewPage].illustration}
-                            alt="Story preview"
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-                        <div className="p-8 md:p-12 flex flex-col justify-center relative bg-white/5">
-                          <div
-                            className="text-lg md:text-xl leading-relaxed text-white"
-                            style={{
-                              fontFamily: "'Georgia', 'Times New Roman', serif",
-                              lineHeight: "1.8",
-                            }}
-                          >
-                            {previewStoryPages[previewPage].text}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="absolute top-2 sm:top-4 right-4 bg-black/80 backdrop-blur-sm px-3 py-1 rounded-full">
-                    <span
-                      className="text-xs text-blue-400 font-medium"
-                      style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-                    >
-                      Live Preview
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="sm:w-2/5 w-full flex flex-col h-auto overflow-auto ">
+          <div className="flex flex-col-reverse md:flex-row transition-all duration-500 h-auto sm:h-screen">
+            {/* CHAT AREA */}
+            <div className="flex-1 flex flex-col overflow-hidden">
               <div className="flex-1 overflow-y-auto p-6 space-y-6">
                 {messages.map((message) => (
                   <div
@@ -468,7 +396,8 @@ export function ChatbotPage() {
                 )}
                 <div ref={messagesEndRef} />
               </div>
-              <div className="p-6 border-t border-blue-400/30 bg-black/90 backdrop-blur-xl">
+
+              <div className="p-6 border-t border-blue-400/30 bg-black/90 backdrop-blur-xl flex-shrink-0">
                 <div className="relative flex-1 flex">
                   <input
                     type="text"
@@ -489,13 +418,88 @@ export function ChatbotPage() {
                 </div>
               </div>
             </div>
+
+            {/* STORY PREVIEW */}
+            <div className="md:w-3/5 w-full bg-white/5 backdrop-blur-xl border-t md:border-t-0 md:border-l border-blue-400/30 p-6 flex-shrink-0">
+              <div className="absolute top-4 md:top-16 right-4 z-10">
+                <button
+                  onClick={() => setIsExpanded(true)}
+                  className="p-2 bg-blue-500/30 hover:bg-blue-500/50 rounded-xl transition-all duration-300"
+                >
+                  <Maximize2 className="text-white w-5 h-5" />
+                </button>
+              </div>
+
+              <div className="h-full flex flex-col">
+                <div className="mb-6">
+                  <div className="flex items-center justify-between mb-3">
+                    <h3
+                      className="text-xl font-bold text-white"
+                      style={{ fontFamily: "'Orbitron', sans-serif" }}
+                    >
+                      Story Visualization
+                    </h3>
+                    <div className="w-3 h-3 bg-blue-400 rounded-full animate-pulse" />
+                  </div>
+                  <p
+                    className="text-sm text-white/60 font-medium"
+                    style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+                  >
+                    Interactive story book preview
+                  </p>
+                </div>
+
+                <div className="flex-1 relative rounded-2xl overflow-hidden border border-blue-400/30 bg-black/40">
+                  <div className="w-full h-full flex items-center justify-center p-8">
+                    <div
+                      className="max-w-5xl w-full rounded-2xl overflow-hidden"
+                      style={{
+                        background: "rgba(15, 15, 35, 0.8)",
+                        backdropFilter: "blur(10px)",
+                        boxShadow: "0 20px 60px rgba(0, 0, 0, 0.6)",
+                        border: "1px solid rgba(100, 200, 255, 0.2)",
+                      }}
+                    >
+                      <div className="grid md:grid-cols-2 gap-0">
+                        <div className="relative aspect-[3/4] md:aspect-auto md:min-h-[300px] overflow-hidden">
+                          <img
+                            src={previewStoryPages[previewPage].illustration}
+                            alt="Story preview"
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                        <div className="p-8 md:p-12 flex flex-col justify-center relative bg-white/5">
+                          <div
+                            className="text-lg md:text-xl leading-relaxed text-white"
+                            style={{
+                              fontFamily: "'Georgia', 'Times New Roman', serif",
+                              lineHeight: "1.8",
+                            }}
+                          >
+                            {previewStoryPages[previewPage].text}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="absolute top-2 md:top-4 right-4 bg-black/80 backdrop-blur-sm px-3 py-1 rounded-full">
+                    <span
+                      className="text-xs text-blue-400 font-medium"
+                      style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+                    >
+                      Live Preview
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         )}
       </div>
 
       {isExpanded && (
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-xl flex items-center justify-center z-[100] p-6 transition-all duration-300">
-          <div className="relative max-w-6xl w-full bg-white/10 rounded-3xl border border-blue-400/40 shadow-2xl overflow-hidden">
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-xl flex items-center justify-center z-[100] p-4 md:p-6 overflow-y-auto">
+          <div className="relative w-full max-w-6xl bg-white/10 rounded-3xl border border-blue-400/40 shadow-2xl overflow-hidden">
             <button
               onClick={() => setIsExpanded(false)}
               className="absolute top-4 right-4 bg-blue-500/30 hover:bg-blue-500/60 rounded-xl p-2 transition-all duration-300 z-10"
@@ -508,84 +512,55 @@ export function ChatbotPage() {
               onClick={() =>
                 setPreviewPage(
                   (prev) =>
-                    // ============ DJANGO BACKEND INTEGRATION ============
-                    // استخدم storyPages بدلاً من previewStoryPages عند الربط مع الباك اند
-                    // prev - 1 + (storyPages.length > 0 ? storyPages.length : previewStoryPages.length)
-                    // ) % (storyPages.length > 0 ? storyPages.length : previewStoryPages.length)
-                    // ============ END DJANGO BACKEND INTEGRATION ============
                     (prev - 1 + previewStoryPages.length) %
                     previewStoryPages.length
                 )
               }
-              className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-blue-500/30 hover:bg-blue-500/60 rounded-xl p-3 transition-all duration-300 z-10"
+              className="absolute left-2 md:left-4 top-1/2 transform -translate-y-1/2 bg-blue-500/30 hover:bg-blue-500/60 rounded-xl p-2 md:p-3 transition-all duration-300 z-10"
             >
-              <ArrowLeft className="text-white w-6 h-6" />
+              <ArrowLeft className="text-white w-5 md:w-6 h-5 md:h-6" />
             </button>
 
             <button
               onClick={() =>
-                setPreviewPage(
-                  (prev) =>
-                    // ============ DJANGO BACKEND INTEGRATION ============
-                    // استخدم storyPages بدلاً من previewStoryPages عند الربط مع الباك اند
-                    // prev + 1) % (storyPages.length > 0 ? storyPages.length : previewStoryPages.length)
-                    // ============ END DJANGO BACKEND INTEGRATION ============
-                    (prev + 1) % previewStoryPages.length
-                )
+                setPreviewPage((prev) => (prev + 1) % previewStoryPages.length)
               }
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-blue-500/30 hover:bg-blue-500/60 rounded-xl p-3 transition-all duration-300 z-10 rotate-180"
+              className="absolute right-2 md:right-4 top-1/2 transform -translate-y-1/2 bg-blue-500/30 hover:bg-blue-500/60 rounded-xl p-2 md:p-3 transition-all duration-300 z-10 rotate-180"
             >
-              <ArrowLeft className="text-white w-6 h-6" />
+              <ArrowLeft className="text-white w-5 md:w-6 h-5 md:h-6" />
             </button>
 
-            <div className="grid md:grid-cols-2">
+            {/* Grid or Column layout */}
+            <div className="flex flex-col md:grid md:grid-cols-2">
               <img
-                src={
-                  // ============ DJANGO BACKEND INTEGRATION ============
-                  // استخدم storyPages بدلاً من previewStoryPages عند الربط مع الباك اند
-                  // storyPages.length > 0 ? storyPages[previewPage].illustration :
-                  // ============ END DJANGO BACKEND INTEGRATION ============
-                  previewStoryPages[previewPage].illustration
-                }
+                src={previewStoryPages[previewPage].illustration}
                 alt="Expanded story"
-                className="w-full h-[500px] object-cover"
+                className="w-full md:h-[500px] h-64 md:object-cover object-cover"
               />
-              <div className="p-12 flex flex-col justify-center bg-black/50">
+              <div className="p-6 md:p-12 flex flex-col justify-center bg-black/50">
                 <p
-                  className="text-xl text-white leading-relaxed"
+                  className="text-base md:text-xl text-white leading-relaxed"
                   style={{
                     fontFamily: "'Georgia', 'Times New Roman', serif",
                     lineHeight: "1.8",
                   }}
                 >
-                  {
-                    // ============ DJANGO BACKEND INTEGRATION ============
-                    // استخدم storyPages بدلاً من previewStoryPages عند الربط مع الباك اند
-                    // storyPages.length > 0 ? storyPages[previewPage].text :
-                    // ============ END DJANGO BACKEND INTEGRATION ============
-                    previewStoryPages[previewPage].text
-                  }
+                  {previewStoryPages[previewPage].text}
                 </p>
 
                 {/* Page indicator */}
-                <div className="mt-8 flex items-center justify-center gap-2">
-                  {
-                    // ============ DJANGO BACKEND INTEGRATION ============
-                    // استخدم storyPages بدلاً من previewStoryPages عند الربط مع الباك اند
-                    // (storyPages.length > 0 ? storyPages : previewStoryPages)
-                    // ============ END DJANGO BACKEND INTEGRATION ============
-                    previewStoryPages.map((_, index) => (
-                      <button
-                        key={index}
-                        onClick={() => setPreviewPage(index)}
-                        className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                          index === previewPage
-                            ? "bg-blue-400 w-8"
-                            : "bg-white/30"
-                        }`}
-                      />
-                    ))
-                  }
+                <div className="mt-6 md:mt-8 flex items-center justify-center gap-2 flex-wrap">
+                  {previewStoryPages.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setPreviewPage(index)}
+                      className={`transition-all duration-300 rounded-full ${
+                        index === previewPage
+                          ? "bg-blue-400 w-6 h-2 md:w-8 md:h-2"
+                          : "bg-white/30 w-2 h-2"
+                      }`}
+                    />
+                  ))}
                 </div>
               </div>
             </div>
