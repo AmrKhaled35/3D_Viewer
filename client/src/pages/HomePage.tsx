@@ -42,7 +42,7 @@ export default function Home() {
             className="w-full h-full object-cover"
           >
             <source
-              src="https://www.pexels.com/download/video/7094565/"
+              src="https://www.pexels.com/download/video/856857/"
               type="video/mp4"
             />
           </video>
