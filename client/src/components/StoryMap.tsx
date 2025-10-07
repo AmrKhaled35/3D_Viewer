@@ -21,7 +21,7 @@ const StarMap = ({ stories, onStorySelect }: StarMapProps) => {
     const angle = (index / total) * Math.PI * 2 - Math.PI / 2;
     const radius = 35;
     const spiralFactor = index * 5;
-    
+
     return {
       x: 50 + Math.cos(angle) * (radius + spiralFactor * 0.3),
       y: 50 + Math.sin(angle) * (radius + spiralFactor * 0.3),
@@ -91,7 +91,7 @@ const StarMap = ({ stories, onStorySelect }: StarMapProps) => {
 
   return (
     <div
-      className="relative w-full h-[600px] rounded-2xl overflow-hidden"
+      className="relative w-full h-[600px] sm:h-[500px] md:h-[600px] rounded-2xl overflow-hidden"
       style={{ fontFamily: "'Orbitron', sans-serif" }}
     >
       <div className="absolute inset-0 bg-gradient-to-br from-space-dark via-space-dark to-purple-950/30">
@@ -151,11 +151,12 @@ const StarMap = ({ stories, onStorySelect }: StarMapProps) => {
             onHoverEnd={() => setHoveredStar(null)}
             onClick={() => onStorySelect(story.id)}
           >
-            <div className="relative w-12 h-12">
+            <div className="relative w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12">
               <motion.div
                 className="absolute inset-0 rounded-full"
                 style={{
-                  background: 'radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.4) 30%, transparent 70%)',
+                  background:
+                    'radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.4) 30%, transparent 70%)',
                   filter: 'blur(12px)',
                 }}
                 animate={{
@@ -165,14 +166,15 @@ const StarMap = ({ stories, onStorySelect }: StarMapProps) => {
                 transition={{
                   duration: 2,
                   repeat: Infinity,
-                  ease: "easeInOut",
+                  ease: 'easeInOut',
                 }}
               />
 
               <motion.div
                 className="absolute inset-0 rounded-full"
                 style={{
-                  background: 'radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,255,255,0.7) 20%, rgba(255,255,255,0.4) 40%, transparent 60%)',
+                  background:
+                    'radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,255,255,0.7) 20%, rgba(255,255,255,0.4) 40%, transparent 60%)',
                   filter: 'blur(6px)',
                 }}
                 animate={{
@@ -182,7 +184,7 @@ const StarMap = ({ stories, onStorySelect }: StarMapProps) => {
                 transition={{
                   duration: 1.5,
                   repeat: Infinity,
-                  ease: "easeInOut",
+                  ease: 'easeInOut',
                   delay: 0.2,
                 }}
               />
@@ -192,9 +194,11 @@ const StarMap = ({ stories, onStorySelect }: StarMapProps) => {
                 style={{
                   width: isHovered ? '16px' : '12px',
                   height: isHovered ? '16px' : '12px',
-                  background: 'radial-gradient(circle, #ffffff 0%, #e0e0e0 40%, #b0b0b0 80%)',
+                  background:
+                    'radial-gradient(circle, #ffffff 0%, #e0e0e0 40%, #b0b0b0 80%)',
                   borderRadius: '50%',
-                  boxShadow: '0 0 20px rgba(255,255,255,1), 0 0 40px rgba(255,255,255,0.8)',
+                  boxShadow:
+                    '0 0 20px rgba(255,255,255,1), 0 0 40px rgba(255,255,255,0.8)',
                 }}
                 animate={{
                   scale: [1, 1.1, 1],
@@ -203,46 +207,22 @@ const StarMap = ({ stories, onStorySelect }: StarMapProps) => {
                 transition={{
                   duration: 1,
                   repeat: Infinity,
-                  ease: "easeInOut",
+                  ease: 'easeInOut',
                 }}
               />
-
-              {[0, 45, 90, 135].map((rotation, i) => (
-                <motion.div
-                  key={i}
-                  className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
-                  style={{
-                    width: isHovered ? '24px' : '18px',
-                    height: '2px',
-                    background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.9), transparent)',
-                    transform: `rotate(${rotation}deg)`,
-                    filter: 'blur(1px)',
-                  }}
-                  animate={{
-                    opacity: [0.5, 1, 0.5],
-                    scale: [0.9, 1.1, 0.9],
-                  }}
-                  transition={{
-                    duration: 1.5,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                    delay: i * 0.1,
-                  }}
-                />
-              ))}
             </div>
 
             <AnimatePresence>
               {isHovered && (
                 <motion.div
-                  className={`absolute ${position} ${transform} w-72 z-50`}
+                  className={`absolute ${position} ${transform} w-64 sm:w-72 z-50`}
                   initial={{ opacity: 0, x: -20, scale: 0.8 }}
                   animate={{ opacity: 1, x: 0, scale: 1 }}
                   exit={{ opacity: 0, x: -20, scale: 0.8 }}
                   transition={{ duration: 0.2 }}
                 >
                   <div className="relative rounded-xl overflow-hidden border border-blue-400/30 bg-black/80 backdrop-blur-xl shadow-2xl">
-                    <div className="relative h-40 overflow-hidden">
+                    <div className="relative h-32 sm:h-40 overflow-hidden">
                       <img
                         src={story.image}
                         alt={story.title}
@@ -251,11 +231,11 @@ const StarMap = ({ stories, onStorySelect }: StarMapProps) => {
                       <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
                     </div>
 
-                    <div className="p-4">
-                      <h3 className="text-xl font-bold text-blue-300 mb-2">
+                    <div className="p-3 sm:p-4">
+                      <h3 className="text-lg sm:text-xl font-bold text-blue-300 mb-2">
                         {story.title}
                       </h3>
-                      <div className="flex items-center justify-between text-sm">
+                      <div className="flex items-center justify-between text-xs sm:text-sm">
                         <span className="text-blue-300/80">
                           {story.pages} pages
                         </span>
@@ -263,7 +243,7 @@ const StarMap = ({ stories, onStorySelect }: StarMapProps) => {
                           {story.category}
                         </span>
                       </div>
-                      <div className="mt-3 pt-3 border-t border-blue-400/20">
+                      <div className="mt-2 sm:mt-3 pt-2 sm:pt-3 border-t border-blue-400/20">
                         <span className="text-blue-400 text-sm font-semibold">
                           Click to read →
                         </span>
@@ -277,15 +257,16 @@ const StarMap = ({ stories, onStorySelect }: StarMapProps) => {
         );
       })}
 
+      {/* Hide this section on small screens */}
       <motion.div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center"
+        className="hidden md:flex absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center"
         initial={{ opacity: 0, scale: 0.5 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 0.5, duration: 0.8 }}
       >
         <div className="relative">
           <div className="absolute inset-0 blur-3xl bg-blue-500/20 rounded-full scale-150" />
-          
+
           <div className="relative bg-black/50 backdrop-blur-md rounded-2xl px-8 py-4 border border-blue-400/30">
             <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-300 via-blue-400 to-purple-300 bg-clip-text text-transparent">
               Story Constellation
