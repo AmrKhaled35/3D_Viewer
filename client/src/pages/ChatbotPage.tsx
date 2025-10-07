@@ -322,8 +322,7 @@ export function ChatbotPage() {
             </div>
           </div>
         ) : (
-          <div className="flex flex-col sm:flex-row transition-all duration-500 h-screen">
-            {/* STORY PREVIEW على الشاشات الصغيرة يكون فوق */}
+          <div className="flex flex-col sm:flex-row transition-all duration-500 h-auto sm:h-screen">
             <div className="sm:w-3/5 w-full bg-white/5 backdrop-blur-xl border-b sm:border-b-0 sm:border-l border-blue-400/30 p-6 relative">
               <div className="absolute top-4 sm:top-16 right-4 z-10">
                 <button
@@ -397,9 +396,7 @@ export function ChatbotPage() {
                 </div>
               </div>
             </div>
-
-            {/* CHAT AREA على الشاشات الصغيرة يكون تحت */}
-            <div className="sm:w-2/5 w-full flex flex-col h-auto">
+            <div className="sm:w-2/5 w-full flex flex-col h-auto overflow-auto ">
               <div className="flex-1 overflow-y-auto p-6 space-y-6">
                 {messages.map((message) => (
                   <div
