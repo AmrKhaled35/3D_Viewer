@@ -69,7 +69,7 @@ export default function Home() {
         </div>
         <div className="relative z-10 max-w-6xl mx-auto px-6 text-center pt-20">
           <h1
-            className="text-5xl md:text-7xl lg:text-7xl font-black text-white mb-6 leading-tight animate-fade-in"
+            className="text-[2.7rem] md:text-7xl lg:text-7xl font-black text-white mb-6 leading-tight animate-fade-in"
             style={{
               fontFamily: "'Orbitron', sans-serif",
               textShadow:

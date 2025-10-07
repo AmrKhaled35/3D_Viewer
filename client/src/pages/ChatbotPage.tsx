@@ -39,13 +39,15 @@ interface StoryPage {
 const previewStoryPages: StoryPage[] = [
   {
     id: 1,
-    illustration: "https://scitechdaily.com/images/Solar-Wind-and-Earth-Magnetosphere.jpg",
-    text: "The Sun is the engine of space weather. It constantly releases streams of charged particles and bursts of energy that travel across the solar system"
+    illustration:
+      "https://scitechdaily.com/images/Solar-Wind-and-Earth-Magnetosphere.jpg",
+    text: "The Sun is the engine of space weather. It constantly releases streams of charged particles and bursts of energy that travel across the solar system",
   },
   {
     id: 2,
-    illustration: "https://tse4.mm.bing.net/th/id/OIP.oujw2Si_ALMqy53u2su9RAHaE8?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3",
-    text: "Solar wind is a continuous flow of charged particles from the Sun. It shapes the magnetic environment of planets and can disturb Earth’s protective shield"
+    illustration:
+      "https://tse4.mm.bing.net/th/id/OIP.oujw2Si_ALMqy53u2su9RAHaE8?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3",
+    text: "Solar wind is a continuous flow of charged particles from the Sun. It shapes the magnetic environment of planets and can disturb Earth’s protective shield",
   },
 ];
 
@@ -85,9 +87,9 @@ export function ChatbotPage() {
   //         message: userMessage,
   //       }),
   //     });
-  //     
+  //
   //     const data = await response.json();
-  //     
+  //
   //     // البيانات المتوقعة من الباك اند:
   //     // {
   //     //   response: "رد البوت",
@@ -96,7 +98,7 @@ export function ChatbotPage() {
   //     //     { id: 2, illustration: "url", text: "text" }
   //     //   ]
   //     // }
-  //     
+  //
   //     return data;
   //   } catch (error) {
   //     console.error('Error sending message to backend:', error);
@@ -110,8 +112,8 @@ export function ChatbotPage() {
       "That is a fascinating question! Space weather describes how solar activity, like solar flares and coronal mass ejections, affects the space environment around Earth.",
       "Great question! Solar wind is a continuous stream of charged particles from the Sun that can disturb Earth's magnetic field and create geomagnetic storms.",
       "Excellent inquiry! Auroras are one of the most visible effects of space weather. They appear when solar particles collide with Earth's atmosphere near the poles.",
-      "Wonderful question! Space weather is important to study because it can impact satellites, astronauts, power grids, and communication systems on Earth."
-    ];    
+      "Wonderful question! Space weather is important to study because it can impact satellites, astronauts, power grids, and communication systems on Earth.",
+    ];
     return responses[Math.floor(Math.random() * responses.length)];
   };
 
@@ -142,13 +144,13 @@ export function ChatbotPage() {
     //       timestamp: new Date(),
     //     };
     //     setMessages((prev) => [...prev, aiMessage]);
-    //     
+    //
     //     // تحديث صفحات القصة بالبيانات القادمة من الباك اند
     //     if (data.story_pages && data.story_pages.length > 0) {
     //       setStoryPages(data.story_pages);
     //       setPreviewPage(0); // إعادة تعيين الصفحة للصفحة الأولى
     //     }
-    //     
+    //
     //     setIsTyping(false);
     //   } else {
     //     // في حالة حدوث خطأ، عرض رسالة خطأ
@@ -185,7 +187,10 @@ export function ChatbotPage() {
   };
 
   const suggestions = [
-    { text: "Explain what space weather is and how it affects Earth", icon: <Zap className="w-4 h-4" /> },
+    {
+      text: "Explain what space weather is and how it affects Earth",
+      icon: <Zap className="w-4 h-4" />,
+    },
     { text: "Tell me about black holes", icon: <Star className="w-4 h-4" /> },
     { text: "What is a supernova?", icon: <Brain className="w-4 h-4" /> },
     { text: "How do planets form?", icon: <Sparkles className="w-4 h-4" /> },
@@ -226,10 +231,16 @@ export function ChatbotPage() {
               <Bot className="w-6 h-6 text-white" />
             </div>
             <div>
-              <h1 className="text-xl font-bold text-white tracking-tight" style={{ fontFamily: "'Orbitron', sans-serif" }}>
+              <h1
+                className="text-xl font-bold text-white tracking-tight"
+                style={{ fontFamily: "'Orbitron', sans-serif" }}
+              >
                 AI Learning Assistant
               </h1>
-              <p className="text-sm text-blue-400 font-medium" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+              <p
+                className="text-sm text-blue-400 font-medium"
+                style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+              >
                 Interactive Story Visualization
               </p>
             </div>
@@ -239,42 +250,50 @@ export function ChatbotPage() {
 
       <div className="relative z-50">
         {!isActive ? (
-          <div className="h-screen overflow-auto flex items-center justify-center p-8">
-            <div className="text-center max-w-4xl mx-auto">
-              <div className="relative mt-52">
+          <div className="min-h-screen flex flex-col items-center justify-center p-4 sm:p-8 overflow-auto">
+            <div className="text-center w-full max-w-4xl mx-auto">
+              <div className="relative mt-32 sm:mt-40">
                 <h2
-                  className="text-5xl md:text-6xl font-extrabold text-white mb-6 leading-tight"
-                  style={{ fontFamily: "'Orbitron', sans-serif", textShadow: "0 0 40px rgba(100, 200, 255, 0.6)" }}
+                  className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-4 sm:mb-6 leading-snug sm:leading-tight"
+                  style={{
+                    fontFamily: "'Orbitron', sans-serif",
+                    textShadow: "0 0 30px rgba(100, 200, 255, 0.6)",
+                  }}
                 >
                   Ask Anything, Learn Everything
                 </h2>
-                <p className="text-xl text-white/70 mb-12 leading-relaxed max-w-2xl mx-auto font-light" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                  Experience the future of learning with our AI-powered assistant. Get instant answers with interactive story visualizations.
+                <p
+                  className="text-base sm:text-lg md:text-xl text-white/70 mb-8 sm:mb-12 leading-relaxed max-w-2xl mx-auto font-light"
+                  style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+                >
+                  Experience the future of learning with our AI-powered
+                  assistant. Get instant answers with interactive story
+                  visualizations.
                 </p>
               </div>
 
-              <div className="relative mb-12 max-w-2xl mx-auto">
-                <div className="relative">
+              <div className="relative mb-8 sm:mb-12 w-full max-w-2xl mx-auto">
+                <div className="relative w-full">
                   <input
                     type="text"
                     value={inputText}
                     onChange={(e) => setInputText(e.target.value)}
                     onKeyPress={handleKeyPress}
                     placeholder="What would you like to learn today?"
-                    className="w-full bg-white/10 backdrop-blur-sm border-2 border-blue-400/30 rounded-2xl px-6 py-4 text-white placeholder-white/50 focus:outline-none focus:border-blue-400 transition-all duration-300 text-lg font-medium pr-16"
+                    className="w-full bg-white/10 backdrop-blur-sm border-2 border-blue-400/30 rounded-2xl px-4 sm:px-6 py-3 sm:py-4 text-white placeholder-white/50 focus:outline-none focus:border-blue-400 transition-all duration-300 text-sm sm:text-lg font-medium pr-14 sm:pr-16"
                     style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                   />
                   <button
                     onClick={handleSendMessage}
                     disabled={!inputText.trim()}
-                    className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-blue-500 hover:bg-blue-600 disabled:opacity-30 disabled:cursor-not-allowed rounded-xl p-3 transition-all duration-300 hover:scale-105"
+                    className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-blue-500 hover:bg-blue-600 disabled:opacity-30 disabled:cursor-not-allowed rounded-xl p-2 sm:p-3 transition-all duration-300 hover:scale-105"
                   >
-                    <Send className="w-5 h-5 text-white" />
+                    <Send className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                   </button>
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12 max-w-4xl mx-auto">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-8 sm:mb-12 w-full max-w-4xl mx-auto">
                 {suggestions.map((suggestion, index) => (
                   <button
                     key={index}
@@ -282,19 +301,19 @@ export function ChatbotPage() {
                       setInputText(suggestion.text);
                       setTimeout(() => handleSendMessage(), 100);
                     }}
-                    className="group bg-white/5 backdrop-blur-sm border border-blue-400/30 rounded-2xl p-6 text-left hover:bg-blue-500/20 transition-all duration-500 hover:scale-105 hover:border-blue-400/50"
+                    className="group bg-white/5 backdrop-blur-sm border border-blue-400/30 rounded-2xl p-4 sm:p-6 text-left hover:bg-blue-500/20 transition-all duration-500 hover:scale-105 hover:border-blue-400/50"
                     style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                   >
-                    <div className="flex items-center mb-3">
-                      <div className="p-2 bg-blue-500/30 rounded-xl mr-3 group-hover:bg-blue-500/50 transition-colors">
+                    <div className="flex items-center mb-2 sm:mb-3">
+                      <div className="p-2 sm:p-3 bg-blue-500/30 rounded-xl mr-2 sm:mr-3 group-hover:bg-blue-500/50 transition-colors">
                         {suggestion.icon}
                       </div>
                       <div className="w-full h-px bg-blue-400/30" />
                     </div>
-                    <p className="text-white font-semibold text-lg mb-2">
+                    <p className="text-white font-semibold text-sm sm:text-lg mb-1 sm:mb-2">
                       {suggestion.text}
                     </p>
-                    <p className="text-white/60 text-sm">
+                    <p className="text-white/60 text-xs sm:text-sm">
                       Interactive story visualization included
                     </p>
                   </button>
@@ -303,14 +322,91 @@ export function ChatbotPage() {
             </div>
           </div>
         ) : (
-          <div className="flex transition-all duration-500 h-screen">
-            <div className="w-2/5 flex flex-col">
-              {/* Chat Area */}
+          <div className="flex flex-col sm:flex-row transition-all duration-500 h-screen">
+            {/* STORY PREVIEW على الشاشات الصغيرة يكون فوق */}
+            <div className="sm:w-3/5 w-full bg-white/5 backdrop-blur-xl border-b sm:border-b-0 sm:border-l border-blue-400/30 p-6 relative">
+              <div className="absolute top-4 sm:top-16 right-4 z-10">
+                <button
+                  onClick={() => setIsExpanded(true)}
+                  className="p-2 bg-blue-500/30 hover:bg-blue-500/50 rounded-xl transition-all duration-300"
+                >
+                  <Maximize2 className="text-white w-5 h-5" />
+                </button>
+              </div>
+
+              <div className="h-full flex flex-col">
+                <div className="mb-6">
+                  <div className="flex items-center justify-between mb-3">
+                    <h3
+                      className="text-xl font-bold text-white"
+                      style={{ fontFamily: "'Orbitron', sans-serif" }}
+                    >
+                      Story Visualization
+                    </h3>
+                    <div className="w-3 h-3 bg-blue-400 rounded-full animate-pulse" />
+                  </div>
+                  <p
+                    className="text-sm text-white/60 font-medium"
+                    style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+                  >
+                    Interactive story book preview
+                  </p>
+                </div>
+
+                <div className="flex-1 relative rounded-2xl overflow-hidden border border-blue-400/30 bg-black/40">
+                  <div className="w-full h-full flex items-center justify-center p-8">
+                    <div
+                      className="max-w-5xl w-full rounded-2xl overflow-hidden"
+                      style={{
+                        background: "rgba(15, 15, 35, 0.8)",
+                        backdropFilter: "blur(10px)",
+                        boxShadow: "0 20px 60px rgba(0, 0, 0, 0.6)",
+                        border: "1px solid rgba(100, 200, 255, 0.2)",
+                      }}
+                    >
+                      <div className="grid md:grid-cols-2 gap-0">
+                        <div className="relative aspect-[3/4] md:aspect-auto md:min-h-[300px] overflow-hidden">
+                          <img
+                            src={previewStoryPages[previewPage].illustration}
+                            alt="Story preview"
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                        <div className="p-8 md:p-12 flex flex-col justify-center relative bg-white/5">
+                          <div
+                            className="text-lg md:text-xl leading-relaxed text-white"
+                            style={{
+                              fontFamily: "'Georgia', 'Times New Roman', serif",
+                              lineHeight: "1.8",
+                            }}
+                          >
+                            {previewStoryPages[previewPage].text}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="absolute top-2 sm:top-4 right-4 bg-black/80 backdrop-blur-sm px-3 py-1 rounded-full">
+                    <span
+                      className="text-xs text-blue-400 font-medium"
+                      style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+                    >
+                      Live Preview
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* CHAT AREA على الشاشات الصغيرة يكون تحت */}
+            <div className="sm:w-2/5 w-full flex flex-col h-auto">
               <div className="flex-1 overflow-y-auto p-6 space-y-6">
                 {messages.map((message) => (
                   <div
                     key={message.id}
-                    className={`flex ${message.isUser ? "justify-end" : "justify-start"}`}
+                    className={`flex ${
+                      message.isUser ? "justify-end" : "justify-start"
+                    }`}
                   >
                     <div className="flex items-start space-x-4 max-w-full">
                       {!message.isUser && (
@@ -320,20 +416,32 @@ export function ChatbotPage() {
                       )}
                       {message.isUser ? (
                         <div className="p-5 rounded-3xl bg-blue-500 text-white rounded-br-lg shadow-xl">
-                          <p className="text-sm leading-relaxed font-medium" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                          <p
+                            className="text-sm leading-relaxed font-medium"
+                            style={{
+                              fontFamily: "'Space Grotesk', sans-serif",
+                            }}
+                          >
                             {message.text}
                           </p>
                         </div>
                       ) : (
                         <div className="w-full p-5 rounded-3xl text-white bg-white/5 relative">
-                          <p className="text-base leading-loose font-light whitespace-pre-line" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                          <p
+                            className="text-base leading-loose font-light whitespace-pre-line"
+                            style={{
+                              fontFamily: "'Space Grotesk', sans-serif",
+                            }}
+                          >
                             {message.text}
                           </p>
                         </div>
                       )}
                       {message.isUser && (
                         <div className="w-10 h-10 bg-white rounded-2xl flex items-center justify-center flex-shrink-0">
-                          <span className="text-black text-sm font-bold">U</span>
+                          <span className="text-black text-sm font-bold">
+                            U
+                          </span>
                         </div>
                       )}
                     </div>
@@ -348,8 +456,14 @@ export function ChatbotPage() {
                       <div className="bg-white/5 backdrop-blur-sm border border-blue-400/30 p-5 rounded-3xl shadow-xl">
                         <div className="flex space-x-2 items-center">
                           <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" />
-                          <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" style={{ animationDelay: "0.2s" }} />
-                          <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" style={{ animationDelay: "0.4s" }} />
+                          <div
+                            className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"
+                            style={{ animationDelay: "0.2s" }}
+                          />
+                          <div
+                            className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"
+                            style={{ animationDelay: "0.4s" }}
+                          />
                         </div>
                       </div>
                     </div>
@@ -357,7 +471,7 @@ export function ChatbotPage() {
                 )}
                 <div ref={messagesEndRef} />
               </div>
-              <div className="p-6 border-t border-blue-400/30 bg-black/90 backdrop-blur-xl ">
+              <div className="p-6 border-t border-blue-400/30 bg-black/90 backdrop-blur-xl">
                 <div className="relative flex-1 flex">
                   <input
                     type="text"
@@ -378,84 +492,6 @@ export function ChatbotPage() {
                 </div>
               </div>
             </div>
-
-            {/* STORY PREVIEW */}
-            <div className="w-3/5 bg-white/5 backdrop-blur-xl border-l border-blue-400/30 p-6 relative">
-              <div className="absolute top-16 right-4 z-10">
-                <button
-                  onClick={() => setIsExpanded(true)}
-                  className="p-2 bg-blue-500/30 hover:bg-blue-500/50 rounded-xl transition-all duration-300"
-                >
-                  <Maximize2 className="text-white w-5 h-5" />
-                </button>
-              </div>
-
-              <div className="h-full flex flex-col">
-                <div className="mb-6">
-                  <div className="flex items-center justify-between mb-3">
-                    <h3 className="text-xl font-bold text-white" style={{ fontFamily: "'Orbitron', sans-serif" }}>
-                      Story Visualization
-                    </h3>
-                    <div className="w-3 h-3 bg-blue-400 rounded-full animate-pulse" />
-                  </div>
-                  <p className="text-sm text-white/60 font-medium" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                    Interactive story book preview
-                  </p>
-                </div>
-
-                <div className="flex-1 relative rounded-2xl overflow-hidden border border-blue-400/30 bg-black/40">
-                  <div className="w-full h-full flex items-center justify-center p-8">
-                    <div
-                      className="max-w-5xl w-full rounded-2xl overflow-hidden"
-                      style={{
-                        background: "rgba(15, 15, 35, 0.8)",
-                        backdropFilter: "blur(10px)",
-                        boxShadow: "0 20px 60px rgba(0, 0, 0, 0.6)",
-                        border: "1px solid rgba(100, 200, 255, 0.2)",
-                      }}
-                    >
-                      <div className="grid md:grid-cols-2 gap-0">
-                        <div className="relative aspect-[3/4] md:aspect-auto md:min-h-[500px] overflow-hidden">
-                          <img
-                            src={
-                              // ============ DJANGO BACKEND INTEGRATION ============
-                              // استخدم storyPages بدلاً من previewStoryPages عند الربط مع الباك اند
-                              // storyPages.length > 0 ? storyPages[previewPage].illustration :
-                              // ============ END DJANGO BACKEND INTEGRATION ============
-                              previewStoryPages[previewPage].illustration
-                            }
-                            alt="Story preview"
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-                        <div className="p-12 flex flex-col justify-center relative bg-white/5">
-                          <div
-                            className="text-xl leading-relaxed text-white"
-                            style={{
-                              fontFamily: "'Georgia', 'Times New Roman', serif",
-                              lineHeight: "1.8",
-                            }}
-                          >
-                            {
-                              // ============ DJANGO BACKEND INTEGRATION ============
-                              // استخدم storyPages بدلاً من previewStoryPages عند الربط مع الباك اند
-                              // storyPages.length > 0 ? storyPages[previewPage].text :
-                              // ============ END DJANGO BACKEND INTEGRATION ============
-                              previewStoryPages[previewPage].text
-                            }
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="absolute top-4 right-4 bg-black/80 backdrop-blur-sm px-3 py-1 rounded-full">
-                    <span className="text-xs text-blue-400 font-medium" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                      Live Preview
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         )}
       </div>
@@ -469,30 +505,37 @@ export function ChatbotPage() {
             >
               <X className="text-white w-5 h-5" />
             </button>
-            
+
             {/* Navigation buttons */}
             <button
-              onClick={() => setPreviewPage((prev) => (
-                // ============ DJANGO BACKEND INTEGRATION ============
-                // استخدم storyPages بدلاً من previewStoryPages عند الربط مع الباك اند
-                // prev - 1 + (storyPages.length > 0 ? storyPages.length : previewStoryPages.length)
-                // ) % (storyPages.length > 0 ? storyPages.length : previewStoryPages.length)
-                // ============ END DJANGO BACKEND INTEGRATION ============
-                prev - 1 + previewStoryPages.length) % previewStoryPages.length
-              )}
+              onClick={() =>
+                setPreviewPage(
+                  (prev) =>
+                    // ============ DJANGO BACKEND INTEGRATION ============
+                    // استخدم storyPages بدلاً من previewStoryPages عند الربط مع الباك اند
+                    // prev - 1 + (storyPages.length > 0 ? storyPages.length : previewStoryPages.length)
+                    // ) % (storyPages.length > 0 ? storyPages.length : previewStoryPages.length)
+                    // ============ END DJANGO BACKEND INTEGRATION ============
+                    (prev - 1 + previewStoryPages.length) %
+                    previewStoryPages.length
+                )
+              }
               className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-blue-500/30 hover:bg-blue-500/60 rounded-xl p-3 transition-all duration-300 z-10"
             >
               <ArrowLeft className="text-white w-6 h-6" />
             </button>
-            
+
             <button
-              onClick={() => setPreviewPage((prev) => (
-                // ============ DJANGO BACKEND INTEGRATION ============
-                // استخدم storyPages بدلاً من previewStoryPages عند الربط مع الباك اند
-                // prev + 1) % (storyPages.length > 0 ? storyPages.length : previewStoryPages.length)
-                // ============ END DJANGO BACKEND INTEGRATION ============
-                prev + 1) % previewStoryPages.length
-              )}
+              onClick={() =>
+                setPreviewPage(
+                  (prev) =>
+                    // ============ DJANGO BACKEND INTEGRATION ============
+                    // استخدم storyPages بدلاً من previewStoryPages عند الربط مع الباك اند
+                    // prev + 1) % (storyPages.length > 0 ? storyPages.length : previewStoryPages.length)
+                    // ============ END DJANGO BACKEND INTEGRATION ============
+                    (prev + 1) % previewStoryPages.length
+                )
+              }
               className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-blue-500/30 hover:bg-blue-500/60 rounded-xl p-3 transition-all duration-300 z-10 rotate-180"
             >
               <ArrowLeft className="text-white w-6 h-6" />
@@ -513,7 +556,10 @@ export function ChatbotPage() {
               <div className="p-12 flex flex-col justify-center bg-black/50">
                 <p
                   className="text-xl text-white leading-relaxed"
-                  style={{ fontFamily: "'Georgia', 'Times New Roman', serif", lineHeight: "1.8" }}
+                  style={{
+                    fontFamily: "'Georgia', 'Times New Roman', serif",
+                    lineHeight: "1.8",
+                  }}
                 >
                   {
                     // ============ DJANGO BACKEND INTEGRATION ============
@@ -523,7 +569,7 @@ export function ChatbotPage() {
                     previewStoryPages[previewPage].text
                   }
                 </p>
-                
+
                 {/* Page indicator */}
                 <div className="mt-8 flex items-center justify-center gap-2">
                   {
@@ -531,16 +577,18 @@ export function ChatbotPage() {
                     // استخدم storyPages بدلاً من previewStoryPages عند الربط مع الباك اند
                     // (storyPages.length > 0 ? storyPages : previewStoryPages)
                     // ============ END DJANGO BACKEND INTEGRATION ============
-                    previewStoryPages
-                  .map((_, index) => (
-                    <button
-                      key={index}
-                      onClick={() => setPreviewPage(index)}
-                      className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                        index === previewPage ? 'bg-blue-400 w-8' : 'bg-white/30'
-                      }`}
-                    />
-                  ))}
+                    previewStoryPages.map((_, index) => (
+                      <button
+                        key={index}
+                        onClick={() => setPreviewPage(index)}
+                        className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                          index === previewPage
+                            ? "bg-blue-400 w-8"
+                            : "bg-white/30"
+                        }`}
+                      />
+                    ))
+                  }
                 </div>
               </div>
             </div>
